@@ -1,9 +1,9 @@
 module.exports = {
     app: {
         token: 'xxx',
-        playing: 'by Zerio ❤️',
-        global: true,
-        guild: 'xxx',
+        playing: 'DJ JAJA CARALHOOO',
+        global: false,
+        guild: '1102682825716666430',
         ExtraMessages: false,
         loopMessage: false,
 
