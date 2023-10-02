@@ -11,15 +11,15 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
         
 
-        if(queue.node.isPlaying()) return inter.editReply({content: `The track is already running, ${inter.member}... try again ? ❌`, ephemeral: true})
+        if(queue.node.isPlaying()) return inter.editReply({content: `A música já esta tocando, ${inter.member}...  ❌`, ephemeral: true})
 
         const success = queue.node.resume();
         
         const ResumeEmbed = new EmbedBuilder()
-        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} resumed ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setAuthor({name: success ? `Voltando a tocar ${queue.currentTrack.title} ✅` : `Algo deu errado ${inter.member}...  ❌` })
         .setColor('#2f3136')
         
         return inter.editReply({ embeds: [ResumeEmbed] });

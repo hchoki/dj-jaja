@@ -10,7 +10,7 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `No music has been played yet`, ephemeral: true });
+        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `Não tocou nenhuma música`, ephemeral: true });
 
         const tracks = queue.history.tracks.toArray();
         console.log(tracks)

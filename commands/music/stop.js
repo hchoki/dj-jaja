@@ -11,13 +11,13 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
         queue.delete();
 
         const StopEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `Music stopped into this server, see you next time ✅` })
+        .setAuthor({name: `Acabou a festa, até a próxima! ✅` })
 
 
        return inter.editReply({ embeds: [StopEmbed] });

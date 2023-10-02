@@ -10,14 +10,14 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
-        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `Não tem mais músicas além da atual ${inter.member}... ❌`, ephemeral: true });
 
         await queue.tracks.clear();
 
         const ClearEmbed = new EmbedBuilder()
-        .setAuthor({name: `The queue has just been cleared 🗑️`})
+        .setAuthor({name: `Playlist limpa 🗑️`})
         .setColor('#2f3136')
         
         inter.editReply({ embeds: [ClearEmbed] });

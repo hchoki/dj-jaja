@@ -10,14 +10,14 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.node.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.node.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
-        if (!queue.history.previousTrack) return inter.editReply({ content: `There was no music played before ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue.history.previousTrack) return inter.editReply({ content: `Não teve músicas antes de ${inter.member}...  ❌`, ephemeral: true });
 
         await queue.history.back();
 
         const BackEmbed = new EmbedBuilder()
-        .setAuthor({name: `Playing the previous track ✅`})
+        .setAuthor({name: `Tocando a música anterior ✅`})
         .setColor('#2f3136')
 
         inter.editReply({ embeds: [BackEmbed] });

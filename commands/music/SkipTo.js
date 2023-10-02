@@ -28,23 +28,23 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Você deve escolher uma das opções de música ${inter.member}...  ❌`, ephemeral: true });
 
             if (track) {
                 const track_skipto = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
-                if (!track_skipto) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+                if (!track_skipto) return inter.editReply({ content: `não encontrei ${track} ${inter.member}... tente usar a url ou nome completo ? ❌`, ephemeral: true });
                 queue.node.skipTo(track_skipto);
-                return inter.editReply({ content: `Jumped to ${track_skipto.title}  ✅` });
+                return inter.editReply({ content: `Pulando para ${track_skipto.title}  ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `Essa música não existe ${inter.member}...  ❌`, ephemeral: true });   
         queue.node.skipTo(index);
 
         const skipToEmbed = new EmbedBuilder()
-        .setAuthor({name: `Skiped to ${trackname} ✅`})
+        .setAuthor({name: `Pulando para ${trackname} ✅`})
         .setColor('#2f3136')
         
         inter.editReply({ embeds: [skipToEmbed] });

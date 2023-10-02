@@ -8,7 +8,7 @@ module.exports = async ({ client, inter, queue }) => {
 
         const ShuffleEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `Fila Misturado com ${queue.tracks.size} música(s)! ✅` })
+        .setAuthor({name: `Fila misturada com ${queue.tracks.size} música(s)! ✅` })
 
 
        return inter.editReply({ embeds: [ShuffleEmbed], ephemeral: true});

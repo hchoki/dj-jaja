@@ -10,14 +10,14 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
         
-        if(queue.node.isPaused()) return inter.editReply({content: `The track is currently paused, ${inter.member}... try again ? ❌`, ephemeral: true})
+        if(queue.node.isPaused()) return inter.editReply({content: `A música atual já esta em pausa, ${inter.member}...  ❌`, ephemeral: true})
 
         const success = queue.node.setPaused(true);
         
         const PauseEmbed = new EmbedBuilder()
-        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} paused ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setAuthor({name: success ? `Música atual ${queue.currentTrack.title} pausada ✅` : `Algo deu errado ${inter.member}...  ❌` })
         .setColor('#2f3136')
         
         return inter.editReply({ embeds: [PauseEmbed] });

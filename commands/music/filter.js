@@ -20,7 +20,7 @@ module.exports = {
 const queue = useQueue(inter.guild);
         const player = useMainPlayer()
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
         const actualFilter = queue.filters.ffmpeg.getFiltersEnabled()[0];
 
@@ -34,12 +34,12 @@ const queue = useQueue(inter.guild);
 
         const filter = filters.find((x) => x.toLowerCase() === infilter.toLowerCase().toString());
 
-        if (!filter) return inter.editReply({ content: `This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `${x}`).join(', ')}.`, ephemeral: true });
+        if (!filter) return inter.editReply({ content: `Este filtro não existe ${inter.member}...  ❌\n${actualFilter ? `Filtro Ativo:  ${actualFilter}.\n` : ''}Lista de filtros disponíveis ${filters.map(x => `${x}`).join(', ')}.`, ephemeral: true });
 
         await queue.filters.ffmpeg.toggle(filter)
 
         const FilterEmbed = new EmbedBuilder()
-        .setAuthor({name: `The filter ${filter} is now ${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'} ✅\n*Reminder the longer the music is, the longer this will take.*`})
+        .setAuthor({name: `O filtro ${filter} esta ${queue.filters.ffmpeg.isEnabled(filter) ? 'ligado' : 'desligado'} ✅`})
         .setColor('#2f3136')
 
        return inter.editReply({ embeds: [FilterEmbed] });

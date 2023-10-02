@@ -11,13 +11,13 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
         const success = queue.node.skip();
 
         const SkipEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setAuthor({name: success ? `Música atual ${queue.currentTrack.title} avançada ✅` : `Algo deu errado ${inter.member}... ❌` })
 
 
        return inter.editReply({ embeds: [SkipEmbed] });

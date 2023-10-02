@@ -28,8 +28,8 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `You have to use one of the options to remove a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Você deve escolher uma das opções ${inter.member}...  ❌`, ephemeral: true });
 
         const BaseEmbed = new EmbedBuilder()
         .setColor('#2f3136')
@@ -37,9 +37,9 @@ const queue = useQueue(inter.guild);
 
         if (track) {
             const track_to_remove = queue.tracks.toArray().find((t) => t.title === track || t.url === track);
-            if (!track_to_remove) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+            if (!track_to_remove) return inter.editReply({ content: `Não foi possivel encontrar ${track} ${inter.member}... tente usar a url ou nome completo ❌`, ephemeral: true });
             queue.removeTrack(track_to_remove);
-            BaseEmbed.setAuthor({name: `removed ${track_to_remove.title} from the queue ✅` })
+            BaseEmbed.setAuthor({name: `${track_to_remove.title} removida da lista ✅` })
 
             return inter.editReply({ embeds: [BaseEmbed] });
         }
@@ -49,11 +49,11 @@ const queue = useQueue(inter.guild);
             const index = number - 1
             const trackname = queue.tracks.toArray()[index].title
 
-            if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+            if (!trackname) return inter.editReply({ content: `Essa música não existe ${inter.member}...  ❌`, ephemeral: true });   
 
             queue.removeTrack(index);
 
-            BaseEmbed.setAuthor({name: `removed ${trackname} from the queue ✅` })
+            BaseEmbed.setAuthor({name: `${track_to_remove.title} removida da lista ✅` })
 
             return inter.editReply({ embeds: [BaseEmbed] });
         }

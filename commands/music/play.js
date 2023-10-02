@@ -23,7 +23,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
         const NoResultsEmbed = new EmbedBuilder()
-            .setAuthor({ name: `No results found... try again ? ❌`})
+            .setAuthor({ name: `Nada encontrado ❌`})
             .setColor('#2f3136')
 
         if (!res || !res.tracks.length) return inter.editReply({ embeds: [NoResultsEmbed] });
@@ -44,14 +44,14 @@ module.exports = {
             await player.deleteQueue(inter.guildId);
 
             const NoVoiceEmbed = new EmbedBuilder()
-                .setAuthor({ name: `I can't join the voice channel... try again ? ❌`})
+                .setAuthor({ name: `Não consigo entrar neste canal...  ❌`})
                 .setColor('#2f3136')
 
             return inter.editReply({ embeds: [NoVoiceEmbed] });
         }
 
             const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `Loading your ${res.playlist ? 'playlist' : 'track'} to the queue... ✅`})
+                .setAuthor({ name: `Adicionando sua ${res.playlist ? 'playlist' : 'música'} na fila... ✅`})
                 .setColor('#2f3136')
                 
             await inter.editReply({ embeds: [playEmbed] });

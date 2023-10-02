@@ -11,7 +11,7 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
@@ -20,18 +20,18 @@ const queue = useQueue(inter.guild);
                     .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
                     .setURL(queue.currentTrack.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
+                        { name: ':hourglass: Duração:', value: `\`${queue.currentTrack.duration}\``, inline: true },
+                        { name: 'Música de:', value: `\`${queue.currentTrack.author}\``, inline: true },
                         { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
+                        { name: 'URL:', value: `\`${queue.currentTrack.url}\`` }
                     )
                     .setThumbnail(queue.currentTrack.thumbnail)
-                    .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
+                    .setFooter({text:`do servidor ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.editReply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return inter.editReply({ content: `Enviei os dados da música por DM ✅`, ephemeral: true });
         }).catch(error => {
-            return inter.editReply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return inter.editReply({ content: `Não consigo te enviar DM ...  ❌`, ephemeral: true });
         });
     },
 };

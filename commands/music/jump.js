@@ -28,23 +28,23 @@ module.exports = {
 
 const queue = useQueue(inter.guild);
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.editReply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `Você deve escolher alguma música para pular ${inter.member}...  ❌`, ephemeral: true });
 
             if (track) {
                 const track_to_jump = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
-                if (!track_to_jump) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+                if (!track_to_jump) return inter.editReply({ content: `Não foi possivel encontrar essa música ${track} ${inter.member}... Tente usar a url ou nome completo da música ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
-                return inter.editReply({ content: `Jumped to ${track_to_jump.title}  ✅` });
+                return inter.editReply({ content: `Pulando para ${track_to_jump.title}  ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `Essa música não existe ${inter.member}...  ❌`, ephemeral: true });   
         queue.node.jump(index);
 
         const JumpEmbed = new EmbedBuilder()
-        .setAuthor({name: `Jumped to ${trackname} ✅`})
+        .setAuthor({name: `Pulando para ${trackname} ✅`})
         .setColor('#2f3136')
         
         inter.editReply({ embeds: [JumpEmbed] });
