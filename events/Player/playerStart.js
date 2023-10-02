@@ -3,7 +3,7 @@ module.exports = (queue, track) => {
 
     if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;
     const embed = new EmbedBuilder()
-    .setAuthor({name: `Vou tocar ${track.title} no canal ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
+    .setAuthor({name: `Tocando ${track.title} no canal ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
     .setColor('#2f3136')
 
     const back = new ButtonBuilder()
