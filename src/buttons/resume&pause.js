@@ -1,12 +1,12 @@
 module.exports = async ({ inter, queue }) => {
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando...  ❌`, ephemeral: true });
 
     const resumed = queue.node.resume();
-    let message = `Current music ${queue.currentTrack.title} resumed ✅`;
+    let message = `Música atual ${queue.currentTrack.title} resumida ✅`;
     
     if (!resumed) {
         queue.node.pause();
-        message = `Current music ${queue.currentTrack.title} paused ✅`;
+        message = `Música atual ${queue.currentTrack.title} pausada ✅`;
     }
 
     return inter.editReply({

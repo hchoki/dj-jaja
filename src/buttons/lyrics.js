@@ -1,12 +1,12 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => {
-    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `Não tem nenhuma música tocando... ? ❌`, ephemeral: true });
     
     try {
         const search = await genius.songs.search(queue.currentTrack.title);
 
         const song = search.find(song => song.artist.name.toLowerCase() === queue.currentTrack.author.toLowerCase());
-        if (!song) return inter.editReply({ content: `No lyrics found for ${queue.currentTrack.title}... try again ? ❌`, ephemeral: true });
+        if (!song) return inter.editReply({ content: `Não encontrei letras para a música ${queue.currentTrack.title}... ❌`, ephemeral: true });
         const lyrics = await song.lyrics();
         const embeds = [];
         for (let i = 0; i < lyrics.length; i += 4096) {
