@@ -3,21 +3,21 @@ module.exports = (queue, track) => {
 
     if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;
     const embed = new EmbedBuilder()
-    .setAuthor({name: `Started playing ${track.title} in ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
+    .setAuthor({name: `Vou tocar ${track.title} no canal ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
     .setColor('#2f3136')
 
     const back = new ButtonBuilder()
-    .setLabel('Back')
+    .setLabel('Anterior')
     .setCustomId(JSON.stringify({ffb: 'back'}))
     .setStyle('Primary')
 
     const skip = new ButtonBuilder()
-    .setLabel('Skip')
+    .setLabel('Próxima')
     .setCustomId(JSON.stringify({ffb: 'skip'}))
     .setStyle('Primary')
 
     const resumepause = new ButtonBuilder()
-    .setLabel('Resume & Pause')
+    .setLabel('Play & Pause')
     .setCustomId(JSON.stringify({ffb: 'resume&pause'}))
     .setStyle('Danger')
 
@@ -27,7 +27,7 @@ module.exports = (queue, track) => {
     .setStyle('Secondary')
     
     const lyrics = new ButtonBuilder()
-    .setLabel('lyrics')
+    .setLabel('Letra')
     .setCustomId(JSON.stringify({ffb: 'lyrics'}))
     .setStyle('Secondary')
 
